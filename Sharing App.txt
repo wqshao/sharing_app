@@ -1,0 +1,103 @@
+﻿Sharing App: A webapp to share/save links and thoughts
+
+
+Tasks:
+* Domain name (purchased)
+* Choose language: 
+   * Flask/React/Postgres?? (Arun, Duber, Barnhard) 
+   * Node JS + Express? (Rob) 
+* Github integration
+* Host: GAE or Heroku?  
+* 
+
+
+
+
+
+Feature Spec Scope
+* Personal view / sharing view (v1)
+* Seen states / filterable by seen states
+* Categories (topic, urgency, length)
+* Favorites - can filter as well? 
+* Chrome extension
+* Ability to comment
+
+
+
+
+Pages
+* 
+
+Data Model
+
+
+User
+* 
+
+Folder? 
+* Category
+* Objects [array]
+
+
+Object
+* id
+* Url
+* text
+* Status: Unread, seen/archive, delete,  
+* Favorite: on/off 
+* Category - pointer 
+* 
+
+
+
+
+
+
+
+
+
+Nice to have
+* Drag and Drop?
+* Chrome extension for either saving (links / previews / text) - similar to Get Pocket tbh
+   * But also eg folders within bookmarks file 
+* Compiles and sends email (?) every week 
+* Share link 
+
+
+
+
+Use Cases
+* Trip planning links 
+* General ambient sharing 
+* Project research 
+
+
+
+
+Tutorials Links
+* https://stackify.com/learn-nodejs-tutorials/
+* https://www.guru99.com/node-js-tutorial.html 
+* https://codeburst.io/25-node-js-tutorials-1db3b1da0260 
+* https://ilovecoding.org/courses/nodejs 
+* * * https://www.altexsoft.com/blog/engineering/the-good-and-the-bad-of-node-js-web-app-development/ 
+* https://vizteck.com/blog/node-js-vs-python-best-option-startup/ 
+* * https://blog.cloudboost.io/create-a-react-application-from-scratch-part-1-introduction-b2e66dfb3aae
+* https://realpython.com/the-ultimate-flask-front-end/
+* https://www.bedjango.com/blog/how-to-build-web-app-react-redux-and-flask/ 
+* https://www.youtube.com/watch?v=7huAdeWJpso 
+* https://scotch.io/tutorials/create-a-simple-to-do-app-with-react 
+* http://zike.io/posts/Full-Stack-Beginner-s-Guide-Flask-React-SQLAlchemy/ 
+* https://learnetto.com/tutorials/rails-5-api-and-react-js-tutorial-how-to-make-an-idea-board-app 
+* https://reactjs.org/tutorial/tutorial.html 
+* * https://auth0.com/blog/introduction-to-progressive-apps-part-one/
+* https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/
+* https://github.com/ryanwhocodes/template-progressive-web-app
+* https://medium.com/@addyosmani/progressive-web-apps-with-react-js-part-i-introduction-50679aef2b12
+* List app: https://css-tricks.com/app-from-scratch-1-design/ 
+* https://pythonspot.com/flask-web-app-with-python/
+* https://realpython.com/introduction-to-flask-part-2-creating-a-login-page/ 
+* https://github.com/facebook/create-react-app
+* https://hackernoon.com/how-to-build-a-todo-app-using-react-redux-and-webpack-1aa99dc2f45c
+* * * https://betterexplained.com/articles/how-to-make-a-bookmarklet-for-your-web-application/ 
+* https://flaviocopes.com/sample-app-ideas/ 
+* https://medium.freecodecamp.org/every-time-you-build-a-to-do-list-app-a-puppy-dies-505b54637a5d
