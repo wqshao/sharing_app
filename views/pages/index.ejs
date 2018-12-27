@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+<% include ../partials/menu.ejs %>
+
+<div class="container-fluid bg-6 text-center">    
+  <h1><%= page %></h1><br>
+    <div class="row">
+    <div class="col-sm-6 text-left">
+      <h3>Interesting Tidbits List</h3>     
+
+      <ul style="list-style-type:none">
+        <% linkslist.forEach(function(link, index) { %>
+            <li><a href="/favorite/<%= index %>">❤</a>
+                <a href="/seen/<%= index %>">👁</a>
+                <a href="/delete/<%= index %>">🗑</a> 
+                <%= link %>
+
+            </li>
+        <% }); %>
+        </ul> 
+
+      <form action="/add/" method="post">
+            <p>
+                <label for="newlink">What else is interesting to read?</label>
+                <input type="textarea" rows="4" name="newlink" id="newlink" autofocus/>
+                <input type="submit" value = "Add Something"/>
+            </p>
+      </form>  
+
+</body>
+<% include ../partials/script.ejs %>
+</html>
