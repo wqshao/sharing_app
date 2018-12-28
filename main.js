@@ -2,7 +2,7 @@ var express = require('express');
 var cookieSession = require('cookie-session'); // Loads the piece of middleware for sessions
 var bodyParser = require('body-parser'); // Loads the piece of middleware for managing the settings
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
+const PORT = process.env.PORT || 5000
 
 var app = express();
 
@@ -63,6 +63,7 @@ app.get('/archive', function(req, res, next) {
 */
 
 
-app.listen(8080);
+//app.listen(8080);
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
