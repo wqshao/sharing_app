@@ -1,7 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <% include ../partials/header.ejs %>
+
+
+<script>
+  $(document).ready(function() {
+    console.log('ready')
+    $("#add_form").submit(function(e) {
+      console.log("form submitted")
+      e.preventDefault()
+      var user_name = "<%= user_name %>"
+      $.post('/add/', {user: user_name , newlink: $("#newlink").val()}).done(function(result) { // 5 seconds
+        console.log(result)
+        location.reload();
+      })
+    })
+
+  })
+</script>
+
 </head>
 
 <body>
@@ -24,7 +45,7 @@
         <% }); %>
         </ul> 
 
-      <form action="/add/" method="post">
+      <form id="add_form" action="/add/" method="post">
             <p>
                 <label for="newlink">What else is interesting to read?</label> <br>
                 <textarea rows = "5" name="newlink" id="newlink" autofocus/></textarea><br>
