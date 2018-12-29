@@ -7,9 +7,10 @@
   <% include ../partials/header.ejs %>
 
 
-<script>
+<script> 
   $(document).ready(function() {
     console.log('ready')
+    
     $("#add_form").submit(function(e) {
       console.log("form submitted")
       e.preventDefault()
@@ -21,6 +22,22 @@
     })
 
   })
+</script>
+
+<script>
+$(document).ready(function() {
+    console.log('ready')
+    
+    $('.fa-trash').on('click', function(e) {
+      console.log("trying to delete now")
+      e.preventDefault()
+      $.get($(this).attr('href')).done(function(result) {
+        console.log(result)
+        location.reload();
+      })
+  })
+  })
+
 </script>
 
 </head>
@@ -35,11 +52,11 @@
       <h3>Interesting Tidbits List</h3>     
 
       <ul style="list-style-type:none">
-        <% linkslist.forEach(function(link, index) { %>
-            <li><a href="/favorite/<%= index %>">❤</a>
-                <a href="/seen/<%= index %>">👁</a>
-                <a href="/delete/<%= index %>">🗑</a> 
-                <%= link %>
+        <% linkslist.forEach(function(linkObj, index) { %>
+            <li><a href="/favorite/<%= linkObj._id %>">❤</a>
+                <a href="/seen/<%= linkObj._id %>">👁</a>
+                <button type="button" class="fa fa-trash" href="/delete/<%= linkObj._id %>"></button>
+                <%= linkObj.link %>
 
             </li>
         <% }); %>
@@ -48,7 +65,7 @@
       <form id="add_form" action="/add/" method="post">
             <p>
                 <label for="newlink">What else is interesting to read?</label> <br>
-                <textarea rows = "5" name="newlink" id="newlink" autofocus/></textarea><br>
+                <textarea rows = "5" cols = "60" name="newlink" id="newlink" autofocus/></textarea><br>
                 <input type="submit" value = "Add Something"/>
             </p>
       </form>  

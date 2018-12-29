@@ -3,6 +3,7 @@ var cookieSession = require('cookie-session'); // Loads the piece of middleware 
 var bodyParser = require('body-parser'); // Loads the piece of middleware for managing the settings
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const mongodb = require('mongodb');
+var ObjectId = require('mongodb').ObjectID;
 const PORT = process.env.PORT || 5000
 
 var app = express();
@@ -68,7 +69,7 @@ app.get('/', function(req, res, next) {
 			var userlinklist = [];
 			} 
 		  if (docs.length > 0) {
-			var userlinklist = docs.map(x => x.link)
+			var userlinklist = docs
 			console.log(userlinklist)
 			}
 		  res.render('pages/index', {page:'Wenqi Says Hi', menuId:'home', user_name: user_name, linkslist: userlinklist}); 
@@ -104,13 +105,26 @@ app.post('/add/', function(req, res) {
     // No res.render because you're not requesting a whole page
 })
 
+//db.test_users.remove( {"_id": ObjectId("4d512b45cc9374271b02ec4f")});
+
+
 /* Deletes an item from the to do list */
 app.get('/delete/:id', function(req, res) {
     if (req.params.id != '') {
-        req.session.linkslist.splice(req.params.id, 1);
-    }
-    res.redirect('/');
-})
+    	console.log(req.params.id);
+		linklist.deleteOne({"_id": ObjectId(req.params.id)}, function(err, result) {
+            if (err) {
+                console.log(err);
+                throw err;
+            }
+            console.log("deleted in db");
+            res.send();
+        });
+    } else {
+		res.send({error:"didn't find anything to delete"})
+	}
+    //res.redirect('/');
+    }) 
 
 /* Redirects to the main list if the page requested is not found */
 app.use(function(req, res, next){
