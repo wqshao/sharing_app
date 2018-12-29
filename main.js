@@ -13,11 +13,12 @@ app.set('view engine', 'ejs');
 
 /* Using client side sessions 
 [todo update to express-session later] */
-app.use(cookieSession({name: 'session', secret: 'privatelinks'}));
+app.use(cookieSession({name: 'session', secret: 'privatelinks', signed: false}));
 
 /* If there is no to do list in the session, 
 we create an empty one in the form of an array before continuing */
 app.use(function(req, res, next){
+	//console.log(req.session)
     if (typeof(req.session.linkslist) == 'undefined') {
         req.session.linkslist = [];
     }
@@ -25,9 +26,12 @@ app.use(function(req, res, next){
 })
 
 app.get('/', function(req, res, next) {
-  // GET REQUEST HAS URL PARAMS AND COOKIES 
-  res.render('pages/index', {page:'Wenqi Says Hi', menuId:'home', linkslist: req.session.linkslist}); //passing page and menuId variables to index view file
-  //console.log('home')
+	console.log("GET: /")
+	console.log(req.query) 
+	console.log(req.session) // + " and session info: " + req.session)
+  	// GET REQUEST HAS URL PARAMS AND COOKIES 
+	res.render('pages/index', {page:'Wenqi Says Hi', menuId:'home', linkslist: req.session.linkslist}); //passing page and menuId variables to index view file
+	//console.log('home')
 });
 
 /* Adding an item to the list */
@@ -66,5 +70,5 @@ app.get('/archive', function(req, res, next) {
 });
 */
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+app.listen(PORT, () => console.log(`Running the server on ${ PORT }`))
 
