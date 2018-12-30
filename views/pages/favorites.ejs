@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+<% include ../partials/menu.ejs %>
+
+<div class="container-fluid bg-6 text-center">    
+  <h1><%= page %></h1><br>
+    <div class="row">
+    <div class="col-sm-6 text-left">
+      <h3>Favorite Tidbits</h3>     
+
+      <ul style="list-style-type:none">
+        <% linkslist.forEach(function(linkObj, index) { %>
+            <li>
+                <button class="linkButtons"><a href="<%= linkObj.link %>"><%= linkObj.link %></a></button>
+            </li>
+        <% }); %>
+        </ul> 
+</body>
+<% include ../partials/script.ejs %>
+</html>

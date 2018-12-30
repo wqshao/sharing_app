@@ -129,22 +129,70 @@ app.get('/delete/:id', function(req, res) {
     //res.redirect('/');
     }) 
 
+/* Favorites an item from the to do list */
+app.get('/favorite/:id', function(req, res) {
+    if (req.params.id != '') {
+    	console.log(req.params.id);
+		linklist.update({"_id": ObjectId(req.params.id)}, {$set: { "favorite": true}} ,function(err, result) {
+            if (err) {
+                console.log(err);
+                throw err;
+            }
+            console.log("favorited in db");
+            res.send();
+        });
+    } else {
+		res.send({error:"didn't find anything to favorite"})
+	}
+    //res.redirect('/');
+    }) 
+
 /* Redirects to the main list if the page requested is not found */
-app.use(function(req, res, next){
-    res.redirect('/');
-})
+//app.use(function(req, res, next){
+//    res.redirect('/');
+//})
 
-
-/*app.get('/category', function(req, res, next) {
-  res.render('pages/index', {page:'About Us', menuId:'about'}); //placeholder to render same page
-  console.log('about')
+//redirects to the favorites tab 
+app.get('/allfavorites', function(req, res, next) {
+	console.log("FAVORITES: the information passed is")
+    console.log(req.query)
+ if(!req.query.user) {
+    var user_name = "test_user"
+    console.log(user_name)
+	}
+	if(req.query.user){
+	var user_name = req.query.user 		
+	}
+	//console.log(req.session) // + " and session info: " + req.session)
+	linklist.find(
+		{ username: user_name, "favorite": true},
+		{ "username": 0, "link": 1, "_id": 0 }
+		).toArray(function(err, docs) {
+		  if (docs.length==0) {
+			console.log("empty");
+			var userlinklist = [];
+			} 
+		  if (docs.length > 0) {
+			var userlinklist = docs
+			console.log(userlinklist)
+			}
+		  res.render('pages/favorites', {page:'Favorites', menuId:'favorite', user_name: user_name, linkslist: userlinklist}); 
+		  //res.redirect("/allfavorites");	
+			//passing page and menuId variables to index view fil
+		})
+//	console.log(userlinklist)
+  	// GET REQUEST HAS URL PARAMS AND COOKIES 
+	//res.redirect("/favorites");
+	//next 
+	//console.log('home')
 });
 
-app.get('/archive', function(req, res, next) {
-  res.render('pages/index', {page:'Contact Us', menuId:'contact'}); //placeholder to render same page 
-  console.log('contact')
-});
-*/
+
+//app.get('/archive', function(req, res, next) {
+//  res.render('pages/index', {page:'Contact Us', menuId:'contact'}); //placeholder to render same page 
+//  console.log('contact')
+//});
+
 
 app.listen(PORT, () => console.log(`Running the server on ${ PORT }`))
 

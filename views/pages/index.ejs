@@ -6,8 +6,7 @@
 
   <% include ../partials/header.ejs %>
 
-
-<script> 
+<script>
   $(document).ready(function() {
     console.log('ready')
     
@@ -25,18 +24,41 @@
 </script>
 
 <script>
-$(document).ready(function() {
+  $(document).ready(function() {
     console.log('ready')
     
-    $('.fa-trash').on('click', function(e) {
-      console.log("trying to delete now")
+    $("#allfavorites").on('click', function(e) {
+      console.log("going to favorites")
       e.preventDefault()
-      $.get($(this).attr('href')).done(function(result) {
+      var user_name = "<%= user_name %>"
+      $.get('/allfavorites', {user: user_name}).done(function(result) {
         console.log(result)
-        location.reload();
+        $("html").html(result);
       })
   })
+}) 
+
+</script>
+
+<script>
+  $(document).ready(function() {
+    console.log('ready')
+    
+    $("#home").on('click', function(e) {
+      console.log("going back home with user name")
+      e.preventDefault()
+      var user_name = "<%= user_name %>"
+      $.get('/', {user: user_name}).done(function(result) {
+        console.log(result)
+        $("html").html(result);
+      })
   })
+}) 
+
+</script>
+
+<script type='text/javascript', src="/js/deleteform.js"></script>
+<script type='text/javascript', src="/js/favoriteform.js"></script>
 
 </script>
 
