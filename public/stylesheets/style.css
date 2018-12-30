@@ -1,0 +1,32 @@
+.linkButtons {
+  background: lightblue;
+  color: black;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  text-align: left;
+  width: 450px;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0px;
+  margin-bottom: 10px;
+  padding-left: 0;
+  padding-top: 5px;
+}
+
+button {
+background-color: #e7e7e7;
+border-radius: 4px;
+margin-top: 5px;
+}

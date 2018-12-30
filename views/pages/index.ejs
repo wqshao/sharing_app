@@ -53,10 +53,10 @@ $(document).ready(function() {
 
       <ul style="list-style-type:none">
         <% linkslist.forEach(function(linkObj, index) { %>
-            <li><a href="/favorite/<%= linkObj._id %>">❤</a>
-                <a href="/seen/<%= linkObj._id %>">👁</a>
-                <button type="button" class="fa fa-trash" href="/delete/<%= linkObj._id %>"></button>
-                <%= linkObj.link %>
+            <li><button class="fa fa-heart" href="/favorite/<%= linkObj._id %>"></button>
+                <button class="fa fa-eye" href="/seen/<%= linkObj._id %>"></button>
+                <button type="button" class="fa fa-trash" href="/delete/<%= linkObj._id %>"></button><br>
+                <button class="linkButtons"><%= linkObj.link %></button>
 
             </li>
         <% }); %>

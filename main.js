@@ -33,6 +33,9 @@ mongodb.MongoClient.connect(uri, function(err, client) {
 //app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// set path for static assets
+app.use(express.static(__dirname + '/public'));
+
 /* Using client side sessions 
 [todo update to express-session later] */
 app.use(cookieSession({name: 'session', secret: 'privatelinks'}));
